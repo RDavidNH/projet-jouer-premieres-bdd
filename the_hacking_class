@@ -1,0 +1,13 @@
+CREATE TABLE `user` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `course_id` INTEGER,
+  `name` VARCHAR(255),
+  `email` VARCHAR(255),
+  FOREIGN KEY(`course_id`) REFERENCES `course` (`id`)
+);
+
+
+CREATE TABLE `course` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `title` VARCHAR(255)
+);

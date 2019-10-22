@@ -1,0 +1,43 @@
+CREATE TABLE `user` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` VARCHAR(255),
+  `age` INTEGER
+);
+
+
+CREATE TABLE `article` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `user_id` INTEGER, 
+  `title` VARCHAR(255),
+  `content` TEXT,
+  FOREIGN KEY(`user_id`) REFERENCES `user` (`id`)
+);
+
+
+CREATE TABLE `category` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `title` VARCHAR(255)
+);
+
+
+CREATE TABLE `article_category` (
+  `article_id` INTEGER, 
+  `category_id` INTEGER, 
+  FOREIGN KEY(`article_id`) REFERENCES `article` (`id`),
+  FOREIGN KEY(`category_id`) REFERENCES `category` (`id`)
+);
+
+
+CREATE TABLE `tag` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `title` VARCHAR(255),
+  `color` VARCHAR(128)
+);
+
+
+CREATE TABLE `category_tag` (
+  `category_id` INTEGER, 
+  `tag_id` INTEGER, 
+  FOREIGN KEY(`category_id`) REFERENCES `category` (`id`),
+  FOREIGN KEY(`tag_id`) REFERENCES `tag` (`id`)
+);

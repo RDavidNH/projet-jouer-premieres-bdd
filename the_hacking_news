@@ -1,0 +1,22 @@
+CREATE TABLE `user` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` VARCHAR(255),
+  `email` VARCHAR(255)
+);
+
+
+CREATE TABLE `link` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `user_id` INTEGER,
+  `url` VARCHAR(255),
+  FOREIGN KEY(`user_id`) REFERENCES `user` (`id`)
+);
+
+
+CREATE TABLE `comment` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `user_id` INTEGER,
+  `link_id` INTEGER,
+  FOREIGN KEY(`user_id`) REFERENCES `user` (`id`),
+  FOREIGN KEY(`link_id`) REFERENCES `link` (`id`)
+);
